@@ -1,0 +1,50 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.5.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'hr.tvz.soko'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.2.6.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.junit.jupiter:junit-jupiter:5.4.0')
+    compile group: 'com.h2database', name: 'h2', version: '1.4.200'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.2.6.RELEASE'
+    compile "org.springframework.boot:spring-boot-starter-security"
+    compile group: 'org.hibernate', name: 'hibernate-gradle-plugin', version: '5.4.15.Final'
+    compile group: 'io.jsonwebtoken', name: 'jjwt-api', version: '0.11.1'
+    compile group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.1'
+    compile group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.1'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-quartz', version: '2.3.0.RELEASE'
+    testCompile group: 'org.springframework.security', name: 'spring-security-test', version: '5.3.2.RELEASE'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.3.0.RELEASE'
+
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
